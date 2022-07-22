@@ -1,0 +1,23 @@
+.container-fluid {
+    margin: 20px auto;
+}
+
+.kolom2 {
+    height: 100%;
+}
+
+.kolom2 h3 {
+    padding-top: 10px;
+}
+
+.kotak {
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+
+
+
