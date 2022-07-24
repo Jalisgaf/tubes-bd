@@ -212,6 +212,26 @@ function getDataDetailLayanan($Id)
     }
 }
 
+function getCountPelangganBulanan()
+{
+    global $mysqli;
+    if ($mysqli->connect_errno == 0) {
+        $res = $mysqli->query("SELECT p.IdPelanggan, pl.Nama, COUNT(*)
+                                FROM pemesanan p JOIN pelanggan pl
+                                ON p.IdPelanggan = pl.IdPelanggan
+                                GROUP BY pl.Nama");
+        if ($res) {
+            $data = $res->fetch_all(MYSQLI_ASSOC);
+            $res->free();
+            return $data;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
 function formatTgl($tgl)
 {
     $exp = explode("-", $tgl);

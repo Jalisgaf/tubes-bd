@@ -66,7 +66,8 @@ session();
                     // END VALIDASI
                 } else {
                     ?>
-                    <p class="card-text">Isi data melalui form!!!</p>
+                    <p class="card-text">Belum ada data yang dipilih. <br>Edit data melalui tombol edit di tampilan list data barang !!!</p>
+                    <a href="viewdata.php" class="btn btn-primary">View Data Barang</a>
                     <?php
                 }
             ?>

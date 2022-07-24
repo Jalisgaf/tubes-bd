@@ -42,6 +42,11 @@ $_SESSION["current_page"] = "Pelanggan";
                 } else {
                     echo "Gagal koneksi" . (DEVELOPMENT ? " : " . $db->connect_error : "") . "<br>";
                 }
+            } else {
+                ?>
+                <p class="card-text">Belum ada data yang dipilih. <br>Hapus data melalui tombol hapus di tampilan list data pelanggan !!!</p>
+                <a href="viewdata.php" class="btn btn-primary">View Data Pelanggan</a>
+                <?php
             }
             ?>
         </div>

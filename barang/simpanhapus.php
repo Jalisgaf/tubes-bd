@@ -41,6 +41,11 @@ session();
                 } else {
                     echo "Gagal koneksi" . (DEVELOPMENT ? " : " . $db->connect_error : "") . "<br>";
                 }
+            } else {
+                ?>
+                <p class="card-text">Belum ada data yang dipilih. <br>Hapus data melalui tombol hapus di tampilan list data barang !!!</p>
+                <a href="viewdata.php" class="btn btn-primary">View Data Barang</a>
+                <?php
             }
             ?>
         </div>

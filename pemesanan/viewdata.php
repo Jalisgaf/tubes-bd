@@ -22,8 +22,9 @@ $_SESSION["current_page"] = "Pemesanan";
                 $db = dbConnect();
                 if ($db->connect_errno == 0) {
                     $sql = "SELECT pem.NoOrder, pel.Nama NamaPelanggan, pem.TglMasuk, pem.TglSelesai, pem.Berat, pem.TotalHarga
-                                FROM pemesanan pem JOIN pelanggan pel
-                                ON pem.IdPelanggan = pel.IdPelanggan
+                            FROM pemesanan pem JOIN pelanggan pel
+                            ON pem.IdPelanggan = pel.IdPelanggan
+                            ORDER BY pem.TglMasuk DESC
                             ";
 
                     $res = $db->query($sql);

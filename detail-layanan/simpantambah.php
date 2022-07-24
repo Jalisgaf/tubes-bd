@@ -12,7 +12,7 @@ session();
 <body class="bg-light">
     <div class="card shadow-lg bg-light kotak">
         <div class="card-body text-center">
-            <h3 class="card-text">Penyimpanan Data Detail Layanan</h3>
+            <h3 class="card-text">Tambah Data Detail Layanan</h3>
             <?php
             if (isset($_POST["tblTambah"])) {
                 $db = dbConnect();
@@ -69,7 +69,7 @@ session();
                 // END VALIDASI
             } else {
                 ?>
-                <p class="card-text">Isi data melalui form!!!</p>
+                <p class="card-text">Belum ada data yang dimasukkan. <br>Isi data terlebih dahulu melalui form !!!</p>
                 <a href="tambahdata.php" class="btn btn-primary">Tambah Data Detail Layanan</a>
             <?php
             }

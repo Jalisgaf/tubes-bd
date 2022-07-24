@@ -11,7 +11,7 @@ $_SESSION["current_page"] = "Pemesanan";
 <body class="bg-light">
     <div class="card shadow-lg bg-light kotak">
         <div class="card-body text-center">
-            <h3 class="card-text">Penyimpanan Data Pemesanan</h3>
+            <h3 class="card-text">Tambah Data Pemesanan</h3>
             <?php 
                 if (isset($_POST["tblTambah"])) {
                     $db= dbConnect();
