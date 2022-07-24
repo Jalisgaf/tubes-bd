@@ -24,7 +24,7 @@ $_SESSION["current_page"] = "Pemesanan";
                         <!-- No Order -->
                         <div class="form-group col-md-6">
                             <label for="NoOrder">No Order</label>
-                            <input type="text" class="form-control" id="NoOrder" name="NoOrder" placeholder="Format no order berupa angka">
+                            <input type="text" class="form-control" id="NoOrder" name="NoOrder" placeholder="Format no order harus berupa angka">
                         </div>
                         <!-- Nama Pelanggan -->
                         <div class="form-group col-md-6">

@@ -212,14 +212,13 @@ function getDataDetailLayanan($Id)
     }
 }
 
-function getCountPelangganBulanan()
+function getTotalPenghasilan()
 {
-    global $mysqli;
-    if ($mysqli->connect_errno == 0) {
-        $res = $mysqli->query("SELECT p.IdPelanggan, pl.Nama, COUNT(*)
-                                FROM pemesanan p JOIN pelanggan pl
-                                ON p.IdPelanggan = pl.IdPelanggan
-                                GROUP BY pl.Nama");
+    $db = dbConnect();
+    if ($db->connect_errno == 0) {
+        $res = $db->query("SELECT SUM(TotalHarga) AS TotalPenghasilan 
+                            FROM pemesanan
+                            ");
         if ($res) {
             $data = $res->fetch_all(MYSQLI_ASSOC);
             $res->free();
@@ -232,6 +231,78 @@ function getCountPelangganBulanan()
     }
 }
 
+function getStatistikPenghasilan()
+{
+    $db = dbConnect();
+    if ($db->connect_errno == 0) {
+        $res = $db->query("SELECT MONTHNAME(TglMasuk) AS Bulan, YEAR(TglMasuk) AS Tahun, SUM(TotalHarga) AS TotalPenghasilan
+                            FROM pemesanan
+                            GROUP BY EXTRACT(MONTH FROM TglMasuk)
+                            ");
+        if ($res) {
+            $data = $res->fetch_all(MYSQLI_ASSOC);
+            $res->free();
+            return $data;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+function getCountTotalPemesanan()
+{
+    $db = dbConnect();
+    if ($db->connect_errno == 0) {
+        $res = $db->query("SELECT COUNT(NoOrder) AS TotalPemesanan FROM pemesanan");
+        if ($res) {
+            $data = $res->fetch_all(MYSQLI_ASSOC);
+            $res->free();
+            return $data;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+function getCountTotalBerat()
+{
+    $db = dbConnect();
+    if ($db->connect_errno == 0) {
+        $res = $db->query("SELECT SUM(Berat) AS TotalBerat FROM pemesanan");
+        if ($res) {
+            $data = $res->fetch_all(MYSQLI_ASSOC);
+            $res->free();
+            return $data;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+function getCountPelanggan()
+{
+    $db = dbConnect();
+    if ($db->connect_errno == 0) {
+        $res = $db->query("SELECT COUNT(IdPelanggan) AS TotalPelanggan FROM pelanggan");
+        if ($res) {
+            $data = $res->fetch_all(MYSQLI_ASSOC);
+            $res->free();
+            return $data;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+
 function formatTgl($tgl)
 {
     $exp = explode("-", $tgl);
@@ -242,13 +313,15 @@ function formatTgl($tgl)
     return $format;
 }
 
-function tblEdit() {
+function tblEdit()
+{
 ?>
     <button class="btn btn-primary btn-flat btn-xs"><i class="fa fa-pen-to-square"></i></button>
 <?php
 }
 
-function tblHapus() {
+function tblHapus()
+{
 ?>
     <button class="btn btn-danger btn-flat btn-xs"><i class="fa fa-trash-can"></i></button>
 <?php

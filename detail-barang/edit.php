@@ -31,25 +31,12 @@ $_SESSION["current_page"] = "Detail Barang";
                                 <!-- No Order -->
                                 <div class="form-group col-md-4">
                                     <label for="NoOrder">No Order</label>
-                                    <select class="form-control" id="NoOrder" name="NoOrder">
-                                        <option value="">Pilih No Order</option>
-                                        <?php
-                                        $dataPemesanan = getListPemesanan();
-                                        foreach ($dataPemesanan as $data) {
-                                            echo "<option value=\"" . $data["NoOrder"] . "\"";
-                                            if ($data["NoOrder"] == $dataDetailBarang["NoOrder"]) {
-                                                echo " selected";
-                                            }
-                                            echo ">" . $data["NoOrder"] . "</option>";
-                                        }
-                                        ?>
-                                    </select>
+                                    <input type="text" class="form-control" id="Jumlah" name="Jumlah" placeholder="0" value="<?= $dataDetailBarang["NoOrder"]; ?>" readonly>
                                 </div>
                                 <!-- Id Barang -->
                                 <div class="form-group col-md-4">
                                     <label for="IdBarang">Id Barang</label>
                                     <select class="form-control" id="IdBarang" name="IdBarang">
-                                        <option value="">Pilih No Order</option>
                                         <?php
                                         $dataBarang = getListBarang();
                                         foreach ($dataBarang as $data) {
